@@ -2,11 +2,11 @@ import { decrement, increment } from "./redux/features/counter/counterSlice";
 import { useAppDispatch, useAppSelector } from "./redux/features/hook";
 
 function App() {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const { count } = useAppSelector((state) => state.counter);
 
-  const handleIncrement = () => {
-    dispatch(increment());
+  const handleIncrement = (amount: number) => {
+    dispatch(increment(amount));
   };
 
   const handleDecrement = () => {
@@ -27,7 +27,13 @@ function App() {
           {count}
         </div>
         <button
-          onClick={handleIncrement}
+          onClick={() => handleIncrement(5)}
+          className="border-2 p-3 rounded-md font-medium hover:bg-gray-200"
+        >
+          Increment by 5
+        </button>
+        <button
+          onClick={() => handleIncrement(1)}
           className="border-2 p-3 rounded-md font-medium hover:bg-gray-200"
         >
           Increment
